@@ -1,0 +1,51 @@
+{
+  "info": {
+    "name": "Prueba EPIK - CRUD Persona",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5080" },
+    { "key": "identificacion", "value": "9000001" }
+  ],
+  "item": [
+    {
+      "name": "Insertar persona",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"identificacion\": \"{{identificacion}}\",\n  \"nombres\": \"Laura\",\n  \"apellidos\": \"Prueba\",\n  \"edad\": 31,\n  \"genero\": \"Femenino\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/personas", "host": ["{{baseUrl}}"], "path": ["api", "personas"] }
+      }
+    },
+    {
+      "name": "Buscar por identificacion",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/api/personas/{{identificacion}}", "host": ["{{baseUrl}}"], "path": ["api", "personas", "{{identificacion}}"] }
+      }
+    },
+    {
+      "name": "Listar mujeres desde la vista",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/api/personas/mujeres", "host": ["{{baseUrl}}"], "path": ["api", "personas", "mujeres"] }
+      }
+    },
+    {
+      "name": "Actualizar edad",
+      "request": {
+        "method": "PATCH",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"edad\": 32\n}" },
+        "url": { "raw": "{{baseUrl}}/api/personas/{{identificacion}}/edad", "host": ["{{baseUrl}}"], "path": ["api", "personas", "{{identificacion}}", "edad"] }
+      }
+    },
+    {
+      "name": "Eliminar persona",
+      "request": {
+        "method": "DELETE",
+        "url": { "raw": "{{baseUrl}}/api/personas/{{identificacion}}", "host": ["{{baseUrl}}"], "path": ["api", "personas", "{{identificacion}}"] }
+      }
+    }
+  ]
+}

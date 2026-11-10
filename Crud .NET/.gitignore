@@ -1,0 +1,8 @@
+.env
+bin/
+obj/
+.vs/
+.vscode/*.log
+*.user
+*.suo
+tmp/
